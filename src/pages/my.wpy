@@ -1,0 +1,59 @@
+<style lang="less">
+
+</style>
+<template>
+  <view class="container">
+    {{title}}
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import { connect } from 'wepy-redux'
+  import Toast from 'wepy-com-toast'
+
+
+  @connect({
+    num (state) {
+      return state.counter.num
+    },
+    asyncNum (state) {
+      return state.counter.asyncNum
+    },
+    sumNum (state) {
+      return state.counter.num + state.counter.asyncNum
+    }
+  })
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'feekr旅行商城'
+    }
+    components = {
+      
+    }
+
+
+    data = {
+      title:'我的'
+      
+    }
+
+    computed = {
+      
+    }
+
+    methods = {
+     
+     
+    }
+
+    events = {
+      
+    }
+
+    onLoad() {
+      
+    }
+  }
+</script>

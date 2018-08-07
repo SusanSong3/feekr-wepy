@@ -22,14 +22,30 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index'
+      'pages/index',
+      'pages/my',
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
-    }
+    },
+    tabBar: {
+      "color": "rgb(155, 155, 155)",
+      "selectedColor": "rgb(26, 188, 156)",
+      "list": [{
+        "pagePath": "pages/index",
+        "text": "首页",
+        "iconPath":"assets/icons/home.png",
+        "selectedIconPath":"assets/icons/homeLight.png"
+      }, {
+        "pagePath": "pages/my",
+        "text": "我的",
+        "iconPath": "assets/icons/my.png",
+        "selectedIconPath": "assets/icons/myLight.png"
+      }]
+    },
   }
 
   globalData = {
@@ -42,7 +58,6 @@ export default class extends wepy.app {
   }
 
   onLaunch() {
-    this.testAsync()
   }
 
   sleep (s) {
@@ -53,10 +68,7 @@ export default class extends wepy.app {
     })
   }
 
-  async testAsync () {
-    const data = await this.sleep(3)
-    console.log(data)
-  }
+ 
 
   getUserInfo(cb) {
     const that = this

@@ -1,254 +1,152 @@
 <style lang="less">
-  .userinfo {
+.container{
+  background: #f6f6f6;
+}
+.search{
+  height: 72rpx;
+  width: 94%;
+  background: white;
+  margin: 20rpx 21.5rpx;
+  text-align:center;
+  font-size: 24rpx;
+  line-height: 72rpx;
+  border: 1rpx solid #e8e8e8;
+  border-radius: 6rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  
+  .icon{
+    position: absolute;
+    top: 15%;
+    left: 30%;
+  }
+  input{
+    height: 72rpx;
+  }
+}
+.swiper{
+  width: 100%;
+  height: 360rpx;
+  .slide-image{
+    width: 100%;
+    height: 100%;
+  }
+}
+.search-nav{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+  background: white;
+  padding-bottom: 40rpx;
+  .styleList{
+  font-size: 24rpx;
+  width: 25%;
+  margin-top: 20rpx;
+}
+  .search-item{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    .search-image{
+      width: 40rpx;
+      height: 40rpx;
+    }
+    .search-title{
+      font-size: 24rpx;
+    }
   }
-
-  .userinfo-avatar {
-    width: 80rpx;
-    height: 80rpx;
-    border-radius: 50%;
-  }
-
-  .userinfo-nickname {
-    color: #aaa;
-  }
+}
 </style>
 <template>
   <view class="container">
-    <view class="userinfo" @tap="handleViewTap">
-      <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
-      <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+    <view class="search">
+      <view class="icon">
+        <icon type="search" size="16"/>
+      </view>
+      <input placeholder="搜索目的地/关键词"/>
     </view>
-
-    <panel>
-      <view class="title" slot="title">测试数据绑定</view>
-
-      <text class="info">{{normalTitle}}</text>
-      <text class="info">{{setTimeoutTitle}}</text>
-      <text class="info">{{mixin}}</text>
-      <text class="info">{{mynum}}</text>
-      <text class="info">{{now}}</text>
-      <text class="info">{{num}}</text>
-      <text class="info">{{asyncNum}}</text>
-      <text class="info">{{sumNum}}</text>
-      <button @tap="plus('a')" size="mini">  +  </button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">其它测试</view>
-      <button @tap="toast" size="mini">第三方组件</button>
-      <button @tap="communicate" size="mini">组件通信</button>
-      <button @tap="tap" size="mini">混合TAP事件</button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试并发网络请求</view>
-      <view>返回结果: <text>{{netrst}}</text></view>
-      <button @tap="request" size="mini"> 点我发起10个请求 </button>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试组件</view>
-
-      <text class="testcounter">计数组件1: </text>
-      <view class="counterview">
-        <counter1 @index-emit.user="counterEmit" />
+    <swiper 
+      indicator-dots="true"
+      autoplay="true" 
+      interval="3000" 
+      duration="500"
+      circular="true"
+      class="swiper"
+      indicator-color="rgba(0,0,0,.4)"
+      indicator-active-color="white"
+      >
+      <block wx:for="{{indexList.slider}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item.cover}}" class="slide-image" width="355" height="180"/>
+        </swiper-item>
+      </block>
+    </swiper>
+    <!-- <view class='search-nav'>
+      <view wx:for="{{indexList.style}}" class='styleList' wx:key="*this" width="40" height="40">
+        <image src='{{item.icon}}' class='iconStyle'/>
+        <view class='styleItem'>{{item.name}}</view>
       </view>
-
-      <text class="testcounter">计数组件2: </text>
-
-      <view class="counterview">
-        <counter2 :num.sync="mynum"></counter2>
-      </view>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试组件Repeat</view>
-      <repeat for="" index="index" item="item" key="key">
-        <group :grouplist="item" :indexa="index"></group>
-      </repeat>
-    </panel>
-
-    <panel>
-      <view class="title" slot="title">测试列表</view>
-      <list></list>
-    </panel>
-
-    <toast />
+    </view> -->
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
-  import Panel from '@/components/panel' // alias example
-  import Counter from 'counter' // alias example
-  import List from '../components/list' // aliasFields example
-  import moduleA from 'module-a' // aliasFields ignore module example
-  import Group from '../components/group'
   import Toast from 'wepy-com-toast'
-  import testMixin from '../mixins/test'
+  import { getIndexInfo } from '../store/actions'
 
-  console.log('moduleA ignored: ', moduleA) // => moduleA ignored: {}
-
-  @connect({
-    num (state) {
-      return state.counter.num
-    },
-    asyncNum (state) {
-      return state.counter.asyncNum
-    },
-    sumNum (state) {
-      return state.counter.num + state.counter.asyncNum
-    }
-  })
+  // @connect({
+    
+  // },{
+    
+  // })
 
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: 'feekr旅行商城'
     }
     components = {
-      panel: Panel,
-      counter1: Counter,
-      counter2: Counter,
-      list: List,
-      group: Group,
-      toast: Toast
+      
     }
 
-    mixins = [testMixin]
 
     data = {
-      mynum: 20,
-      userInfo: {
-        nickName: '加载中...'
-      },
-      normalTitle: '原始标题',
-      setTimeoutTitle: '标题三秒后会被修改',
-      count: 0,
-      netrst: '',
-      groupList: [
-        {
-          id: 1,
-          name: '点击改变',
-          list: [
-            {
-              childid: '1.1',
-              childname: '子项，点我改变'
-            }, {
-              childid: '1.2',
-              childname: '子项，点我改变'
-            }, {
-              childid: '1.3',
-              childname: '子项，点我改变'
-            }
-          ]
-        },
-        {
-          id: 2,
-          name: '点击改变',
-          list: [
-            {
-              childid: '2.1',
-              childname: '子项，点我改变'
-            }, {
-              childid: '2.2',
-              childname: '子项，点我改变'
-            }, {
-              childid: '2.3',
-              childname: '子项，点我改变'
-            }
-          ]
-        },
-        {
-          id: 3,
-          name: '点击改变',
-          list: [
-            {
-              childid: '3.1',
-              childname: '子项，点我改变'
-            }
-          ]
-        }
-      ]
+      title:'首页',
+      indexList:[],
+      
     }
 
     computed = {
-      now () {
-        return +new Date()
-      }
+      
     }
 
     methods = {
-      plus () {
-        this.mynum++
-      },
-      toast () {
-        let promise = this.$invoke('toast', 'show', {
-          title: '自定义标题',
-          img: 'https://raw.githubusercontent.com/kiinlam/wetoast/master/images/star.png'
-        })
-
-        promise.then((d) => {
-          console.log('toast done')
-        })
-      },
-      tap () {
-        console.log('do noting from ' + this.$name)
-      },
-      communicate () {
-        console.log(this.$name + ' tap')
-
-        this.$invoke('counter2', 'minus', 45, 6)
-        this.$invoke('counter1', 'plus', 45, 6)
-
-        this.$broadcast('index-broadcast', 1, 3, 4)
-      },
-      request () {
-        let self = this
-        let i = 10
-        let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ==']
-        while (i--) {
-          wepy.request({
-            url: 'https://www.madcoder.cn/tests/sleep.php?time=1&t=css&c=' + map[i] + '&i=' + i,
-            success: function (d) {
-              self.netrst += d.data + '.'
-              self.$apply()
-            }
-          })
-        }
-      },
-      counterEmit (...args) {
-        let $event = args[args.length - 1]
-        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
-      }
+     
+     
     }
 
     events = {
-      'index-emit': (...args) => {
-        let $event = args[args.length - 1]
-        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
-      }
+      
     }
 
     onLoad() {
-      let self = this
-      this.$parent.getUserInfo(function (userInfo) {
-        if (userInfo) {
-          self.userInfo = userInfo
+       wepy.request({
+        url: 'https://wapi.feekr.com/shop/home/index?shopid=FK',
+        success: (result) => {
+          this.indexList = result.data.result
+          this.$apply()
+          console.log(this.indexList.slider)          
+          
         }
-        self.normalTitle = '标题已被修改'
-
-        self.setTimeoutTitle = '标题三秒后会被修改'
-        setTimeout(() => {
-          self.setTimeoutTitle = '到三秒了'
-          self.$apply()
-        }, 3000)
-
-        self.$apply()
       })
     }
+    onReady(){  
+    }
   }
+
 </script>
