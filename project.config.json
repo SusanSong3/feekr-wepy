@@ -1,14 +1,15 @@
 {
-  "description": "A WePY project",
-  "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "postcss": false,
-    "minified": false,
-    "newFeature": true
-  },
-  "compileType": "miniprogram",
-  "appid": "wx1c561cf15f780ec6",
-  "projectname": "feekr",
-  "miniprogramRoot": "./dist"
+	"description": "A WePY project",
+	"setting": {
+		"urlCheck": false,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wx1c561cf15f780ec6",
+	"projectname": "feekr",
+	"miniprogramRoot": "./dist",
+	"condition": {}
 }

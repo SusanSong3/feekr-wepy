@@ -1,0 +1,148 @@
+<style lang="less">
+.search-container{
+    width: 100%;
+    height: 100%;
+    background: #f6f6f6;
+    .search-box{
+        display: flex;
+        flex-direction: row;
+        padding: 30rpx 0;
+        border-bottom: 1rpx solid #e6e6e6;
+        background: white;
+        position: relative;
+        
+        .search-icon{
+            position: absolute;
+            top:40%;
+            left: 50rpx;
+            z-index: 9;
+        }
+        .input-box{
+            width: 100%;
+            padding: 10rpx 20rpx;
+            input{
+                height: 50rpx;
+                border-radius: 28rpx;
+                font-size: 24rpx;
+                background: #f6f6f6;
+                padding-top: 10rpx;
+                padding-bottom: 10rpx;
+            
+                padding-left:80rpx;
+                margin: 10rpx 0;
+            } 
+        }
+        .placeholder{
+            font-size: 26rpx;
+            color: #333;
+            line-height: 50rpx;
+            height: 50rpx;
+        }
+    }
+    .keywords{
+        margin-top: 20rpx;
+        background: white;
+        padding-left: 2%;
+        padding-right: 2%;
+        padding-bottom: 25rpx;
+        position: relative;
+        .cancel{
+            position: absolute;
+            top: 10%;
+            right: 2%;
+        }
+        .key-title{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .title{
+            display: block;
+            padding-top: 10rpx;
+            font-size: 26rpx;
+            line-height: 44rpx;
+            text-align: center;
+            color: #999;
+        }
+        .key-box{
+            display: flex;
+            flex-direction: row;
+            .key{
+                padding: 8rpx;
+                margin-top: 14rpx;
+                margin-right: 16rpx;
+                border-radius: 6rpx;
+                border: 1rpx solid #ccc;
+                font-size: 26rpx;
+                line-height: 44rpx;
+                color: #6a6a6a;
+            }
+        }
+    }
+}
+</style>
+
+<template>
+    <view class="search-container">
+        <view class="search-box">
+            <icon type="search" size="16" class="search-icon"/>
+            <view class="input-box">
+                <input placeholder="搜索目的地/关键词" auto-focus placeholder-class="placeholder" @input="handleInputValue"/>
+            </view>
+        </view>
+        <view class="keywords" wx:if="{{isShowHistory}}">
+            <view class="key-title">
+                <view class="title">— 历史搜索 —</view>
+                <icon type="cancel" class="cancel" size="16" @tap="handleClearKeywords" color="#666"/>
+            </view>
+            <view class='key-box'>
+                <text wx:for="{{keywords}}" wx:key="*this" class="key">{{item}}</text>
+            </view>
+        </view>
+        <view class="keywords">
+            <view class="title">— 热门搜索 —</view>
+            <view class='key-box'>
+                <text wx:for="{{keywords}}" wx:key="*this" class="key">{{item}}</text>
+            </view>
+        </view>
+    </view>
+</template>
+<script>
+    import wepy from 'wepy';
+    export default class  extends wepy.page {
+        config = {
+            navigationBarTitleText: 'feekr旅行商城'
+        }
+        components = {
+        
+        }
+        data = {
+            keywords:[],
+            isShowHistory:true,
+        }
+        computed = {
+        
+        }
+        methods = {
+            handleInputValue(e){
+                console.log(e.detail.value)
+            },
+            handleClearKeywords(){
+                // 点击[历史搜索]上的关闭符号：
+                // 1、隐藏历史搜索
+                this.isShowHistory = false
+                this.$apply()
+                // 2、清楚本地缓存
+            },
+        }
+        onLoad() {
+            wx.request({
+                url:"https://wapi.feekr.com/shop/product/keyword?shopid=FK",
+                success:(result) => {
+                    this.keywords = result.data.result.list
+                    this.$apply()
+                }
+            })
+        }
+    }
+</script>

@@ -1,0 +1,66 @@
+<style lang="less">
+.cardTitle{
+    display: flex;
+    flex-direction: row;
+    height: 40rpx;
+    padding-top: 40rpx;
+    line-height: 40rpx;
+    align-items: center;
+    .colorBlock{
+        background: rgb(26, 188, 156);
+        width: 8rpx;
+        height: 65%;
+        margin-right: 20rpx;
+    }
+    .title{
+        font-size: 30rpx;
+    }
+    .subtitle{
+        text-indent: 20rpx;
+        font-size: 24rpx;
+        color: #999;
+        
+    }
+    .more{
+        flex: 1;
+        color: rgb(26, 188, 156);
+        font-size: 24rpx;
+        text-align: right;
+    }
+}
+</style>
+<template>
+    <view class="cardTitle">
+        <view class="colorBlock"></view>
+        <text class="title">{{title}}</text>
+        <text class="subtitle">{{subtitle}}</text>
+        <text class="more" wx:if="{{more === 'true'}}">更多</text>
+    </view>
+</template>
+<script>
+    import wepy from 'wepy'
+    export default class CardTitle extends wepy.component {
+        props = {
+            title:{
+                type:String,
+                default:null
+            },
+            subtitle:{
+                type:String,
+                default:''
+            },
+            more:{
+                type:String
+            }
+        }
+        data = {
+            // more : false
+        }
+        methods = {
+            
+        }
+        onLoad(){
+
+        }
+    }
+</script>

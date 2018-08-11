@@ -1,0 +1,676 @@
+<style lang="less">
+@import '../wxParse/wxParse.wxss';
+@baseColor: rgb(26, 188, 156);
+.swiper {
+  width: 100%;
+  height: 422rpx;
+  position: relative;
+  .slide-image {
+    width: 100%;
+  }
+}
+.currentIndex {
+  position: absolute;
+  top: 360rpx;
+  right: 20rpx;
+  color: white;
+  z-index: 99;
+  font-size: 24rpx;
+}
+.head {
+  padding: 0 24rpx;
+  text-align: center;
+  background: white;
+  height: 255rpx;
+  .productDesc {
+    display: block;
+    font-size: 34rpx;
+    line-height: 50rpx;
+    padding-top: 25rpx;
+    padding-bottom: 32rpx;
+  }
+  .productName {
+    font-size: 22rpx;
+    color: #666;
+    padding: 0;
+    display: block;
+  }
+  .productPrice {
+    display: block;
+    text-align: center;
+    color: @baseColor;
+    margin-top: 20rpx;
+    padding-bottom: 38rpx;
+    line-height: 30rpx;
+    font-size: 22rpx;
+    .productPrice-bold {
+      font-weight: bolder;
+      font-size: 38rpx;
+    }
+  }
+}
+// 选择套餐
+.chooseMenu {
+  padding: 26rpx 42rpx 0;
+  color: @baseColor;
+  background: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 26rpx;
+  padding: 0 42rpx;
+  line-height: 120rpx;
+  .choose {
+    flex: 1;
+    font-weight: normal;
+  }
+}
+
+// 产品介绍
+.product-guide {
+  background: white;
+  margin-top: 26rpx;
+  padding: 39rpx 42rpx 60rpx;
+  display: flex;
+  flex-direction: column;
+  .product-avator {
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  .product-user {
+    text-align: center;
+    margin: 24rpx 20rpx;
+    font-size: 20rpx;
+    color: #9b9b9b;
+  }
+  .product-forU {
+    font-weight: bold;
+    font-size: 26rpx;
+    text-align: center;
+  }
+  .info-box {
+    position: relative;
+    margin-top: 50rpx;
+    padding: 16rpx 20rpx;
+    font-size: 26rpx;
+    line-height: 50rpx;
+    color: #282828;
+    background: #f5f5f5;
+    &::before {
+      position: absolute;
+      left: 50%;
+      top: -44rpx;
+      transform: translateX(-50%);
+      content: '';
+      border-top: 22rpx solid transparent;
+      border-right: 15rpx solid transparent;
+      border-bottom: 22rpx solid #f5f5f5;
+      border-left: 15rpx solid transparent;
+    }
+  }
+  
+}
+// 选项卡
+.product-tab {
+  margin-top: 26rpx;
+  background: white;
+  .tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1rpx solid #e8e8e8;
+    .static {
+      flex: 1;
+      font-size: 26rpx;
+      line-height: 82rpx;
+      text-align: center;
+      border: transparent;
+      border-radius: 0;
+      border-bottom: 4rpx solid transparent;
+    }
+    .active {
+      flex: 1;
+      font-size: 26rpx;
+      line-height: 82rpx;
+      text-align: center;
+      color: @baseColor;
+      border-radius: 0;
+      border: transparent;
+      border-bottom: 4rpx solid @baseColor;
+    }
+  }
+  .contain {
+    padding: 30rpx 22rpx;
+    font-size: 28rpx;
+    color: #3c3c3c;
+    line-height: 60rpx;
+  }
+  .detail {
+    padding: 30rpx 22rpx;
+    font-size: 26rpx;
+    image {
+      width: 100% !important;
+    }
+  }
+  .notice {
+    .noticeTitle {
+      font-weight: bolder;
+    }
+    padding: 30rpx 22rpx;
+    font-size: 28rpx;
+    color: #3c3c3c;
+    line-height: 60rpx;
+  }
+  .comment {
+    padding: 30rpx 22rpx;
+    background: white;
+    .comment-item {
+      border-bottom: 1rpx solid #d9d9d9;
+      padding-top: 20rpx;
+      padding-bottom: 35rpx;
+      color: #3c3c3c;
+      &:last-child {
+        border: none;
+      }
+      .comment-top {
+        display: flex !important;
+        flex-direction: row;
+        font-size: 24rpx;
+        .comment-image {
+          width: 45rpx;
+          height: 45rpx;
+          margin-right: 12rpx;
+          border-radius: 50%;
+        }
+        .comment-nickname {
+          flex: 1;
+        }
+        .comment-commentTime {
+          width: 160rpx;
+          color: #ccc;
+        }
+      }
+      .comment-content {
+        line-height: 50rpx;
+        margin-top: 20rpx;
+        display: -webkit-box;
+        font-size: 28rpx;
+        color: #000000;
+        line-height: 40rpx;
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+// 客服微信
+.contact {
+  background: white;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  margin-top: 18rpx;
+  padding: 0 26rpx 15rpx;
+  .contact-title {
+    text-align: center;
+    padding: 20rpx 0;
+    display: block;
+  }
+  .contact-content {
+    padding-bottom: 20rpx;
+  }
+}
+// 猜你喜欢
+.guessLike {
+  margin-top: 18rpx;
+  background: white;
+  padding: 0 26rpx 15rpx;
+  margin-bottom: 96rpx;
+  .guess-title {
+    font-size: 30rpx;
+    line-height: 98rpx;
+    text-align: center;
+  }
+  .guess-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .guess-item {
+      width: 49%;
+      text-align: center;
+      margin-bottom: 22rpx;
+      .guess-image {
+        width: 100%;
+      }
+      .item-title {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        white-space: nowrap;
+        font-size: 22rpx;
+        color: #888;
+        margin-top: 12rpx;
+        text-align: left;
+      }
+      .item-price {
+        text-align: center;
+        width: 100%;
+        color: @baseColor;
+        font-size: 24rpx;
+        line-height: 44rpx;
+        .bold {
+          font-size: 26rpx;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+// 底部导航
+.navs {
+  border-top: 2rpx solid @baseColor;
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  height: 96rpx;
+  width: 100%;
+  color: black;
+  .nav-icon {
+    border-radius: 0;
+    border: none;
+    border-right: 1rpx solid #ccc;
+    width: 15%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .index {
+      height: 60rpx;
+      font-family: 'iconfont';
+      font-size: 40rpx;
+      color: #333;
+      line-height: 60rpx;
+    }
+    .nav {
+      color: #666;
+      font-size: 24rpx;
+      line-height: 1;
+    }
+  }
+  .navigator-hover {
+    background: white;
+  }
+  .nav-now {
+    flex: 1;
+    background: @baseColor;
+    color: white;
+    text-align: center;
+    line-height: 96rpx;
+    text {
+      color: white;
+      font-size: 32rpx;
+    }
+  }
+  .hover-orderNow {
+    background: @baseColor;
+  }
+}
+// 模态框
+.actionSheet {
+  position: absolute;
+  top: 600px;
+  background: white;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  padding: 0 26rpx 94rpx;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .action-top {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 20rpx;
+    position: relative;
+    .action-title {
+      flex: 1;
+      padding: 26rpx 42rpx 0 16rpx;
+      line-height: 32rpx;
+      font-size: 28rpx;
+    }
+    .close-icon {
+      padding: 26rpx 42rpx 0 0;
+      width: 80rpx;
+      line-height: 80rpx;
+    }
+  }
+  .product-group {
+    flex: 1;
+    .group-item {
+      padding: 15rpx 0;
+      border-top: 1rpx solid #eee;
+      .item-flex {
+        display: flex !important;
+        margin-top: 48rpx;
+        margin-bottom: 44rpx;
+        line-height: 34rpx;
+        cursor: pointer;
+        font-size: 32rpx;
+        .group-name {
+          flex: 1;
+        }
+        .group-price {
+          width: 160rpx;
+          margin-right: 4rpx;
+          font-size: 32rpx;
+          font-weight: bold;
+          color: @baseColor;
+        }
+      }
+    }
+  }
+}
+</style>
+<template>
+   <view style="background-color: #f6f6f6;position:relative">
+      <scroll-view scroll-y style="height:{{windowHeight}}px">
+        <swiper  
+            interval="3000" 
+            duration="500"
+            circular="true"
+            class="swiper"
+            current
+            bindchange="handleChange"
+            >
+            <block wx:for="{{information.productThumb}}" wx:key="*this">
+                <swiper-item>
+                <image src="{{item}}!640X360" class="slide-image" width="355" height="180" data-wxAppUrl="{{item.wxAppUrl}}" @tap="handleSwiperClick"/>
+                </swiper-item>
+            </block>
+        </swiper>
+        <!-- 轮播图上方的数字指针 -->
+        <view class="currentIndex">{{currentIndex}}/10</view>
+        <view class="head">
+            <text class="productDesc">{{information.productDesc}}</text>
+            <text class="productName">{{information.productName}}</text>
+            <text class="productPrice"><text class="productPrice-bold">¥{{information.productPrice}}</text>起/{{information.productUnitCount}}{{information.productUnit}}</text>
+        </view>
+        <!-- 选择套餐 -->
+        <!-- <view animation="{{animationData}}" style="background:red;height:100rpx;width:100rpx"></view> -->
+        <view class="chooseMenu" @tap="handleChooseMenu">
+            <text class="choose">选择套餐</text>
+            <text class="more">></text>
+        </view>
+        
+        <!-- 产品介绍 -->
+        <view class="product-guide">
+            <image src="{{information.head}}" class="product-avator"/>
+            <text class="product-user">旅游体验师{{information.user}}</text>
+            <text class="product-forU">为你推荐</text>
+            <text class="info-box">{{information.recom}}</text>
+        </view>
+        <!-- 选项卡 -->
+        <view class="product-tab">
+            <!-- 费用包含 -->
+            <view class="tabs" @scroll="scrollTap">
+                <button class="{{tabClass == 'containTab'  ? 'active' : 'static' }}" plain="true" id="1" @tap="handleTapButton">费用包含</button>
+                <button class="{{tabClass == 'detailTab' ? 'active' : 'static' }}" plain="true" id="2" @tap="handleTapButton">产品详情</button>
+                <button class="{{tabClass == 'noticeTab' ? 'active' : 'static' }}" plain="true" id="3" @tap="handleTapButton">购买须知</button>
+                <button class="{{tabClass == 'commentTab' ? 'active' : 'static' }}" plain="true" id="4" @tap="handleTapButton" wx:if="{{showComment}}">精选评论</button>
+            </view>
+            <view wx:if="{{tabClass == 'containTab' ? true : false}}" class="contain">
+                <text>{{information.productContain}}</text>
+            </view>
+            <!-- 产品详情 -->
+            <view wx:if="{{tabClass == 'detailTab' ? true : false}}" class="detail">
+                <import src="../wxParse/wxParse.wxml"/>
+                <view class='detailContent'>
+                    <template is="wxParse" data="{{wxParseData:productDetail.nodes}}"/>
+                </view>
+            </view> 
+            <!-- 购买须知 -->
+            <view wx:if="{{tabClass == 'noticeTab' ? true : false}}" class="notice">
+                <view class="noticeTitle">使用说明</view>
+                <text>{{information.usage}}</text>
+            </view>
+            <!-- 精选评论 -->
+            <view wx:if="{{tabClass == 'commentTab' ? true : false}}" class="comment">
+                <view wx:for="{{comments}}" wx:key="{{item.commentId}}" class="comment-item">
+                    <view class="comment-top">
+                        <image src="{{item.avatar}}" class="comment-image"/>
+                        <text class="comment-nickname">{{item.nickname}}</text>
+                        <text class="comment-commentTime">{{item.commentTime}}</text>
+                    </view>
+                    <text class="comment-content">{{item.content}}</text>
+                </view>
+            </view>
+        </view>
+        <view class="contact">
+            <text class="contact-title">客服微信</text>
+            <text class="contact-content">【注】关于产品有任何咨询需求，都可添加客服微信：feekr_cs（国内度假），FEEKR1314（出境度假）</text>
+        </view>
+        <view class="guessLike">
+            <text class="guess-title">猜你喜欢</text>
+            <view class="guess-content">
+                <view wx:for="{{guessLike}}" wx:key="{{item.productId}}" class="guess-item">
+                <!-- {{item.productDesc}} -->
+                    <image src="{{item.productCover}}!320X200" class="guess-image" mode="widthFix"/>
+                    <text class='item-title'>{{item.productName}}</text>
+                    <text class='item-price'><text class="bold">¥{{item.productPrice}}</text>/起{{item.productUnitCount}}{{item.productUnit}}</text>
+                </view>
+            </view>
+        </view>
+      </scroll-view>
+      <!-- 底部导航栏 -->
+        <view class="navs">
+            <navigator class="nav-icon" open-type="navigateBack" hover-class>
+                <text class="index">&#xe648;</text>
+                <text class="nav">首页</text>
+            </navigator>
+            <navigator class="nav-icon" @tap="handleService" hover-class>
+                <text class="index">&#xe646;</text>
+                <text class="nav">客服</text>
+            </navigator>
+            <navigator class="nav-icon" plain="true" @tap="handleCollection" hover-class>
+                <text class="index">&#xe63c;</text>
+                <text class="nav">收藏</text>
+            </navigator>
+            <navigator class="nav-now" plain="true" @tap="orderNow" hover-class="hover-orderNow">
+                <text>立即预订</text>
+            </navigator>
+        </view>
+        <!--模态框 -->
+        <view class="actionSheet"  wx:if="{{showActionSheet}}" animation="{{animationData}}">
+            <view class='action-top'>
+                <text class='action-title'>{{information.productName}}</text>
+                <icon class="close-icon" type="cancel" size="20" color="#666" @tap="hideActionSheet"/>
+            </view>
+            <view scroll-y class="product-group">
+                <view wx:for="{{information.group}}" wx:key="{{item.groupId}}" id="{{item.groupId}}" class="group-item">
+                    <view class="item-flex">
+                        <text class="group-name">{{item.groupName}}</text>
+                        <text class="group-price">¥ {{item.groupPrice}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+var WxParse = require('../wxParse/wxParse.js');
+export default class Detail extends wepy.page {
+  config = {
+    navigationBarTitleText: '产品详情'
+  };
+  data = {
+    productId: 0,
+    information: {},
+    comments: [],
+    currentIndex: 1,
+    tabClass: 'containTab',
+    tabs: ['containTab', 'detailTab', 'noticeTab', 'commentTab'],
+    productDetail:'',
+    guessLike: [],
+    windowHeight: '',
+    showActionSheet: false,
+    animationData: {},
+    showComment: true
+  };
+  methods = {
+    handleChange(option) {
+      this.currentIndex = option.detail.current + 1;
+      this.$apply();
+    },
+    //中间的标签
+    handleTapButton(e) {
+      this.tabClass = this.tabs[e.target.id - 1];
+      this.$apply();
+      let position = e.target.offsetTop;
+      wx.pageScrollTo({
+        scrollTop: position - 30,
+        duration: 300
+      });
+    },
+    //下方导航栏
+    handleService() {
+      console.log('service');
+    },
+    handleCollection() {
+      console.log('collection');
+    },
+    orderNow() {
+      console.log('orderNow');
+    },
+    // 选择套餐
+    handleChooseMenu() {
+      this.showActionSheet = true;
+      this.$apply();
+      var animation = wx.createAnimation({
+        duration: 500,
+        timingFunction: 'ease'
+      });
+      this.animation = animation;
+      animation.translateY(-600).step();
+      this.setData({
+        animationData: animation.export()
+      });
+    },
+    hideActionSheet() {
+      var animation = wx.createAnimation({
+        duration: 1000,
+        timingFunction: 'ease'
+      });
+      this.animation = animation;
+      animation.translateY(600).step();
+      this.setData(
+        {
+          animationData: animation.export()
+        },
+        () => {
+          setTimeout(() => {
+            this.showActionSheet = false;
+            this.$apply();
+          }, 200);
+        }
+      );
+    }
+  };
+
+  onLoad(option) {
+    this.productId = option.productId;
+    let pvFrom = option.pvFrom
+    this.$apply();
+    // 主体数据
+    wx.request({
+      url: 'https://wapi.feekr.com/shop/product/detail?',
+      data: {
+        productId: option.productId,
+        channel: option.channel ? option.channel : '',
+        pvFrom,
+        shopid: 'FK'
+      },
+      success: result => {
+        this.information = result.data.result;
+        let hotel = result.data.result.hotel
+        if(typeof hotel === 'object'){
+          this.requireComments(hotel.hotelId);
+        }else{
+          this.showComment = false
+        }
+        //拿到hotelId再做请求，拿回评论数据
+        
+       
+        //产品详情
+        let productDetail = result.data.result.productDetail;
+        this.$apply();
+        this.render(productDetail);
+      }
+    });
+    // 猜你喜欢
+    //随机生成一个作为ProductCategoryId，这个本来应该是通过大数据分析的；但是我也不会...
+    let randomProductCategoryId = Math.floor(Math.random() * 100000000);
+    wx.request({
+      url: 'https://wapi.feekr.com/shop/product/like?',
+      data: {
+        productCategoryId: randomProductCategoryId,
+        count: 4,
+        shopid: 'FK'
+      },
+      success: result => {
+        this.guessLike = result.data.result.list;
+        this.$apply();
+      }
+    });
+  }
+  onReady() {
+    //手机屏幕的高度
+    wx.getSystemInfo({
+      success: result => {
+        this.windowHeight = result.windowHeight;
+        this.$apply();
+      }
+    });
+  }
+  render(productDetail) {//将接口返回的html字符串转换成小程序能够识别的元素，使用了WxParse插件
+    let that = this;
+    let temp = WxParse.wxParse('productDetail', 'html', productDetail, that, 5);
+    // console.log(this)
+    this.productDetail = temp;
+    this.$apply();
+  }
+  requireComments(hotelId) {//评论数据
+    wx.request({
+      url: 'https://wapi.feekr.com/shop/comment/list?',
+      data: {
+        productId: this.productId,
+        hotelId: hotelId,
+        page: 1,
+        shopid: 'FK'
+      },
+      success: result => {
+        let list = result.data.result.list
+        if(list.length == 0){
+          this.showComment = false
+          this.$apply()
+        }else{
+          this.comments = result.data.result.list;
+          this.$apply();
+        }
+      }
+    });
+  }
+}
+</script>

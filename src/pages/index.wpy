@@ -1,74 +1,316 @@
 <style lang="less">
-.container{
+.container {
   background: #f6f6f6;
-}
-.search{
-  height: 72rpx;
-  width: 94%;
-  background: white;
-  margin: 20rpx 21.5rpx;
-  text-align:center;
-  font-size: 24rpx;
-  line-height: 72rpx;
-  border: 1rpx solid #e8e8e8;
-  border-radius: 6rpx;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  
-  .icon{
-    position: absolute;
-    top: 15%;
-    left: 30%;
-  }
-  input{
+  height: 100%;
+  .search {
     height: 72rpx;
+    width: 94%;
+    background: white;
+    margin: 20rpx 21.5rpx;
+    text-align: center;
+    font-size: 24rpx;
+    line-height: 72rpx;
+    border: 1rpx solid #e8e8e8;
+    border-radius: 6rpx;
+    // display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .icon {
+      position: absolute;
+      top: 15%;
+      left: 30%;
+    }
+    input {
+      height: 72rpx;
+    }
   }
-}
-.swiper{
-  width: 100%;
-  height: 360rpx;
-  .slide-image{
+  .swiper {
     width: 100%;
-    height: 100%;
+    height: 360rpx;
+    .slide-image {
+      width: 100%;
+      height: 100%;
+    }
   }
-}
-.search-nav{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: center;
-  background: white;
-  padding-bottom: 40rpx;
-  .styleList{
-  font-size: 24rpx;
-  width: 25%;
-  margin-top: 20rpx;
-}
-  .search-item{
+  .search-nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    background: white;
+    padding-bottom: 40rpx;
+    padding-top: 10rpx;
+    .search-item {
+      font-size: 24rpx;
+      width: 25%;
+      margin-top: 20rpx;
+      .search-icon {
+        width: 80rpx;
+        height: 80rpx;
+        margin: 0 53.75rpx 18rpx;
+      }
+      .search-title {
+        text-align: center;
+      }
+    }
+  }
+  // 新品&独家
+  .new-hot {
+    margin-top: 26rpx;
+    padding: 0 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+    background: white;
+    box-sizing: border-box;
+    width: 100%;
+    .new-card {
+      padding-top: 45rpx;
+      .new-title {
+        display: flex;
+        flex-direction: row;
+        font-size: 28rpx;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 45rpx;
+        .new-left {
+          padding-right: 20rpx;
+        }
+        .new-line {
+          height: 1px;
+          flex: 1;
+          background: #e8e8e8;
+        }
+        .new-more {
+          color: rgb(26, 188, 156);
+          font-size: 24rpx;
+          cursor: pointer;
+          padding-left: 20rpx;
+        }
+      }
+      .new-content {
+        display: flex;
+        flex-direction: row;
+        .new-item {
+          width: 32%;
+          margin-right: 2%;
+          text-align: center;
+          font-size: 24rpx;
+          line-height: 50rpx;
+          overflow: hidden;
+          &:last-child {
+            margin: 0;
+          }
+          .item-img {
+            width: 100% !important;
+            height: 225.6rpx !important;
+          }
+          .item-title {
+            margin-top: 12rpx;
+            overflow: hidden;
+            width: 225.6rpx;
+            display: block;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 24rpx;
+            line-height: 50rpx;
+          }
+          .item-price {
+            color: rgb(26, 188, 156);
+            font-size: 24rpx;
+            line-height: 32rpx;
+          }
+        }
+      }
+    }
+  }
+  // 主题推荐
+  .theme {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    background: white;
+    padding: 0 22.5rpx;
+    .theme-item {
+      width: 100%;
+      margin-top: 45rpx;
+      border-bottom: 1rpx solid #e8e8e8;
+      &:last-child {
+        border: none;
+      }
+      .theme-img {
+        width: 100%;
+        height: 282.4rpx;
+      }
+      .theme-title {
+        font-size: 26rpx;
+        line-height: 40rpx;
+        margin-bottom: 38rpx;
+        margin-top: 18rpx;
+        text-align: left;
+        text-indent: 20rpx;
+      }
+    }
+  }
+  // 攻略资讯
+  .strategy {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    background: white;
+    padding: 0 22.5rpx;
     display: flex;
     flex-direction: column;
-    .search-image{
-      width: 40rpx;
-      height: 40rpx;
+    .strategy-item {
+      display: flex;
+      flex-direction: row;
+      margin-top: 30rpx;
+      padding-bottom: 24rpx;
+      text-align: left;
+      border-bottom: 1rpx solid #e8e8e8;
+      .strategy-img {
+        width: 282rpx !important;
+        height: 188rpx !important;
+        margin-right: 35rpx;
+      }
+      .strategy-right {
+        flex: 1;
+        height: 188rpx;
+        font-size: 24rpx;
+        .strategy-title {
+          font-size: 26rpx;
+          line-height: 44rpx;
+          color: #2d2d2d;
+        }
+        .tags {
+          display: flex;
+          flex-direction: row;
+          color: #888;
+          margin-top: 35rpx;
+          font-size: 24rpx;
+          line-height: 24rpx;
+          font-weight: normal;
+        }
+      }
     }
-    .search-title{
-      font-size: 24rpx;
+  }
+  // 猜你喜欢
+  .guessYouLike {
+    background: white;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    padding: 0 22.5rpx;
+    .guess {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-top: 40rpx;
+      .guess-item {
+        width: 49.2%;
+        padding-bottom: 35rpx;
+        font-size: 24rpx;
+        line-height: 35rpx;
+        .guess-image {
+          width: 100%;
+          height: 216.25rpx;
+        }
+        .guess-title {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          width: 100%;
+          white-space: nowrap;
+          line-height: 35rpx;
+          margin-top: 12rpx;
+          display: block;
+        }
+        .guess-price {
+          text-align: center;
+          color: rgb(26, 188, 156);
+          font-size: 24rpx;
+          line-height: 35rpx;
+        }
+      }
+    }
+  }
+  // footer
+  .footer {
+    background: white;
+    padding-top: 24rpx;
+    padding-bottom: 60rpx;
+    margin-top: 20rpx;
+    margin-bottom: 50rpx;
+    font-size: 24rpx;
+    text-align: center;
+    color: #888;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .txt {
+      border-bottom: 1px solid #e8e8e8;
+      width: 40%;
+      margin: 0 auto;
+      padding: 20rpx 0;
+      .feekr {
+        font-size: 50rpx;
+        color: #333;
+        display: block;
+        font-weight: bold;
+      }
+    }
+    .code {
+      width: 70%;
+      border-bottom: 2rpx dashed #e8e8e8;
+      padding-bottom: 30rpx;
+      .qrcode {
+        width: 200rpx;
+        height: 200rpx;
+        margin: 30rpx auto;
+        display: block;
+      }
+      text {
+        line-height: 40rpx;
+        display: block;
+      }
+    }
+    .buttons {
+      margin-top: 30rpx;
+      display: flex;
+      justify-content: center;
+      button {
+        background: #1abc9c;
+        color: white;
+        margin: 0 20rpx;
+        border-radius: 24rpx;
+        font-size: 28rpx;
+        padding: 12rpx 34rpx;
+      }
     }
   }
 }
 </style>
 <template>
-  <view class="container">
-    <view class="search">
+  <scroll-view
+    scroll-y
+    lower-threshold="50"
+    bindscrolltolower="lower"
+    style="height:{{windowHeight}}px"
+    class="container"
+  >
+    <!-- <view class="container"> -->
+    <!-- 搜索栏 -->
+    <view class="search" @tap="handleSearchClick">
       <view class="icon">
         <icon type="search" size="16"/>
       </view>
-      <input placeholder="搜索目的地/关键词"/>
+      <input placeholder="搜索目的地/关键词" />
     </view>
+    <!-- 轮播图 -->
     <swiper 
       indicator-dots="true"
       autoplay="true" 
@@ -79,74 +321,256 @@
       indicator-color="rgba(0,0,0,.4)"
       indicator-active-color="white"
       >
-      <block wx:for="{{indexList.slider}}" wx:key="*this">
+      <block wx:for="{{indexList.slider}}" wx:key="{{item.id}}">
         <swiper-item>
-          <image src="{{item.cover}}" class="slide-image" width="355" height="180"/>
+          <image src="{{item.cover}}" class="slide-image" width="355" height="180" @tap="handleSwiperClick({{item.wxAppUrl}})"/>
         </swiper-item>
       </block>
     </swiper>
-    <!-- <view class='search-nav'>
-      <view wx:for="{{indexList.style}}" class='styleList' wx:key="*this" width="40" height="40">
-        <image src='{{item.icon}}' class='iconStyle'/>
-        <view class='styleItem'>{{item.name}}</view>
+    <!-- 导航 -->
+    <view class='search-nav'>
+      <view wx:for="{{indexList.style}}" class='search-item' wx:key="vd" id="{{item.id}}" @tap="handleNavClick">
+        <image src='{{item.icon}}' class='search-icon'/>
+        <view class='search-title'>{{item.name}}</view>
       </view>
-    </view> -->
-  </view>
+    </view>
+    <!-- 新品&独家 -->
+    <view class="new-hot">
+      <view class="new-card">
+        <view class="new-title">
+          <text class="new-left">新品&独家{{asyncNum}}</text>
+          <view class="new-line"></view>
+          <text class="new-more">更多</text>
+        </view>
+        <view class="new-content">
+          <view wx:for="{{indexList.newProduct}}" class='new-item' wx:key="{{item.id}}" id="{{item.id}}" @tap="handleNewClick">
+            <image src='{{item.cover}}!200X200' class='item-img'/>
+            <text class="item-title">{{item.productName}}</text>
+            <text class="item-price"><text style="font-weight:700">¥ {{item.currentPrice}}</text> 起/{{item.unitCount}}{{item.unit}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="new-card">
+        <view class="new-title">
+          <text class="new-left">本周特卖</text>
+          <view class="new-line"></view>
+          <text class="new-more">更多</text>
+        </view>
+        <view class="new-content">
+          <view wx:for="{{indexList.specialsProduct}}" class='new-item' wx:key="{{item.id}}" id="{{item.id}}" @tap="handleSpecialClick">
+            <image src='{{item.cover}}!200X200' class='item-img'/>
+            <text class="item-title">{{item.productName}}</text>
+            <text class="item-price"><text style="font-weight:700">¥ {{item.currentPrice}}</text> 起/{{item.unitCount}}{{item.unit}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 主题推荐 -->
+    <view class="theme">
+      <CardTitle1 
+      title="主题推荐"
+      subtitle="给出最新的出游主题"
+      more="false"/>
+      <view wx:for="{{indexList.theme}}" wx:key="{{item.id}}" class="theme-item" @tap="handleThemeClick({{item.id}})">
+        <image class="theme-img" src="{{item.cover}}!750X300"/>
+        <view class="theme-title">{{item.name}}</view>
+      </view>
+    </view>
+    <!-- 攻略资讯 -->
+    <view class="strategy">
+      <CardTitle2 
+      title="攻略资讯"
+      subtitle="推荐城市深度游攻略"
+      more="true"/>
+      <view wx:for="{{strategy}}" wx:key="{{item.id}}" class="strategy-item" @tap="handleStrategyClick({{item.id}})">
+        <image class="strategy-img" src="{{item.cover}}!600X400"/>
+        <view class="strategy-right">
+          <view class="strategy-title">{{item.title}}</view>
+          <view class="tags">
+            <text wx:for="{{item.tags}}" wx:key="{{item.id}}" space="nbsp">{{item}} </text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 猜你喜欢 -->
+    <view class="guessYouLike">
+      <CardTitle3 
+      title="猜你喜欢"
+      subtitle="这些也许是你喜欢的"
+      more="false"/>
+      <view class="guess">
+        <view wx:for="{{guessLike}}" wx:key="{{item.id}}" class="guess-item">
+        <image src="{{item.cover}}!320X200" class="guess-image" lazy-load="true" mode="aspectFit"/>
+        <text class="guess-title">{{item.productName}}</text>
+        <view class="guess-price"><text style="font-weight:700">¥ {{item.currentPrice}}</text> 起/{{item.unitCount}}{{item.unit}}</view>
+      </view>
+      </view>
+    </view>
+     <!-- qrcode -->
+    <view class="footer">
+      <view class="txt">
+        <text class="feekr">Feekr</text>
+        <text>©2016Feekr</text>
+      </view>
+      <view class="code">
+        <image src="https://m.feekr.com/resource/img/icon/feekr_code.png" class="qrcode"/>
+        <text>长按二维码或添加微信：feekr_trip</text>
+        <text>关注feekr小众旅行, 获取最新玩法攻略</text>
+      </view>
+      <view class="buttons">
+        <button size="mini" style="background:#1abc9c;color:white;" class="">关于Feekr</button>
+        <button size="mini" style="background:#1abc9c;color:white;">联系我们</button>
+      </view>
+    </view>
+  </scroll-view>
 </template>
 
 <script>
-  import wepy from 'wepy'
-  import { connect } from 'wepy-redux'
-  import Toast from 'wepy-com-toast'
-  import { getIndexInfo } from '../store/actions'
+import wepy from 'wepy';
+import { connect } from 'wepy-redux';
+import { getIndexInfo } from '../store/actions';
+import CardTitle from '../components/cardTitle';
 
-  // @connect({
-    
-  // },{
-    
-  // })
-
-  export default class Index extends wepy.page {
-    config = {
-      navigationBarTitleText: 'feekr旅行商城'
+@connect(
+  {
+    indexList(state) {
+      return state.indexData.list;
     }
-    components = {
-      
-    }
-
-
-    data = {
-      title:'首页',
-      indexList:[],
-      
-    }
-
-    computed = {
-      
-    }
-
-    methods = {
-     
-     
-    }
-
-    events = {
-      
-    }
-
-    onLoad() {
-       wepy.request({
-        url: 'https://wapi.feekr.com/shop/home/index?shopid=FK',
-        success: (result) => {
-          this.indexList = result.data.result
-          this.$apply()
-          console.log(this.indexList.slider)          
-          
-        }
-      })
-    }
-    onReady(){  
-    }
+  },
+  {
+    getIndexInfo
   }
+)
+export default class Index extends wepy.page {
+  config = {
+    navigationBarTitleText: 'feekr旅行商城'
+  };
+  components = {
+    CardTitle1: CardTitle,
+    CardTitle2: CardTitle,
+    CardTitle3: CardTitle
+  };
+  data = {
+    title: '首页',
+    windowHeight: 0,
+    indexList: [],
+    strategy: [],
+    guessLike: [],
+    page: 1
+  };
 
+  computed = {};
+
+  methods = {
+    handleSearchClick() {
+      this.$navigate('./search');
+    },
+    handleSwiperClick(url) {//轮播图处对 地址 进行处理
+      // console.log(url)
+      let productId = url
+        .split('/')[3]
+        .split('=')[1]
+        .slice(0, 5);
+      let channelIndex = url.indexOf('channel');
+      let channel = url.slice(channelIndex + 8);
+      let shopid = 'FK';
+      let type = url.slice(6);
+      let isTheme = type.indexOf('themeDetail');
+      //  判断 地址 里是否有themeDetail，有就去主题页，没有就去详情页
+      if (isTheme === 1) {
+        let options = {};
+        let themeUrl = type.slice(19).split('&');
+        themeUrl.map(val => {
+          let res = val.split('=');
+          options[res[0]] = res[1];
+        });
+        // console.log(options)
+        this.$navigate('./theme', options);
+      } else {
+        this.$navigate('./detail', {
+          productId,
+          channel,
+          shopid
+        });
+        // console.log('else')
+      }
+    },
+    handleNavClick(e) {
+      let productId = e.currentTarget.id;
+      console.log(e.currentTarget.id);
+    },
+    handleNewClick(e) {
+      wx.navigateTo({
+        url: `./detail?productId=${
+          e.currentTarget.id
+        }&pvFrom=wap_index_new&shopid=FK`
+      });
+    },
+    handleSpecialClick(e) {
+      wx.navigateTo({
+        url: `./detail?productId=${
+          e.currentTarget.id
+        }&pvFrom=wap_index_new&shopid=FK`
+      });
+    },
+    handleThemeClick(id) {
+      console.log('id :', id);
+    },
+    handleStrategyClick(id) {
+      console.log('id :', id);
+    },
+    lower() {
+      if (this.page !== 3) {
+        this.page++;
+        wx.request({
+          url: 'https://wapi.feekr.com/shop/home/guess_like?',
+          data: {
+            page: this.page,
+            shopid: 'FK'
+          },
+          success: result => {
+            this.guessLike = this.guessLike.concat(result.data.result.list);
+            this.$apply();
+          }
+        });
+      }
+    }
+  };
+
+  events = {};
+  watch = {
+    // asyncNum(news,old){
+    //   console.log(news,old)
+    // }
+  };
+   onLoad() {
+     this.methods.getIndexInfo()
+     wepy.request({
+      url: 'https://wapi.feekr.com/news/lists?shopid=FK',
+      
+    }).then((result) => {
+        let strategyList = result.data.result.list;
+        this.strategy = strategyList.slice(0, 3);
+        this.$apply();
+    })
+    wx.request({
+      url: 'https://wapi.feekr.com/shop/home/guess_like?',
+      data: {
+        page: this.page,
+        shopid: 'FK'
+      },
+      success: result => {
+        this.guessLike = result.data.result.list;
+        this.$apply();
+      }
+    });
+  }
+  onReady() {
+    wx.getSystemInfo({
+      success: result => {
+        this.windowHeight = result.windowHeight;
+      }
+    });
+  }
+}
 </script>

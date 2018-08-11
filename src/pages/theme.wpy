@@ -1,0 +1,18 @@
+<template>
+    <view>
+        theme
+    </view>
+</template>
+<script>
+import wepy from 'wepy';
+export default class extends wepy.page {
+  components = {};
+  data = {};
+  computed = {};
+  methods = {};
+  onLoad(options) {
+    console.log(options);
+    
+  }
+}
+</script>
